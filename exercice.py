@@ -6,29 +6,59 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number < 0:
+        number *= -1
+
+    return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
+    noms = []
+    for prefixe in prefixes:
+        noms.append(prefixe + suffixe)
 
-    return [""]
+    return noms
 
 
 def prime_integer_summation() -> int:
-    return 0
+    somme = 0
+    nombre = 1
+    nb_premiers = 0
+    while (nb_premiers) < 100:
+        nombre += 1
+        for i in range(2, nombre):
+            if nombre % 2 == 0:
+                nb_premiers += 1
+                somme += nombre
+
+    return somme
 
 
 def factorial(number: int) -> int:
-    return 0
+    factorielle = 1
+    for nombre in range(1, number + 1):
+        factorielle *= nombre
+    return factorielle
 
 
 def use_continue() -> None:
-    pass
+    for nombre in range(1, 11):
+        if nombre == 5:
+            continue
+        else:
+            print(nombre)
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    validite = []
+    for groupe in groups:
+        if 3 > len(groupe) > 10:
+            validite.append(True)
+        else:
+            validite.append(False)
+
+    return validite
 
 
 def main() -> None:
@@ -41,14 +71,14 @@ def main() -> None:
 
     number = 10
     print(f"La factiorelle du nombre {number} est: {factorial(number)}")
-    
+
     print(f"L'affichage de la boucle est:")
     use_continue()
 
     groups = [
         [15, 28, 65, 70, 72], [18, 24, 22, 50, 70], [25, 2],
-              [20, 22, 23, 24, 18, 75, 51, 49, 100, 18, 20, 20], [70, 50, 26, 28], [75, 50, 18, 25],
-              [13, 25, 80, 15], [20, 30, 40, 50, 60], [75, 50, 100, 28]
+        [20, 22, 23, 24, 18, 75, 51, 49, 100, 18, 20, 20], [70, 50, 26, 28], [75, 50, 18, 25],
+        [13, 25, 80, 15], [20, 30, 40, 50, 60], [75, 50, 100, 28]
     ]
     print(f"Les différents groupes sont: {groups}")
     print(f"L'acceptance des groupes est: {verify_ages(groups)}")
