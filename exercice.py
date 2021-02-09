@@ -22,16 +22,19 @@ def use_prefixes() -> List[str]:
 
 
 def prime_integer_summation() -> int:
-    somme = 0
+    #24133
     nombre = 1
-    nb_premiers = 0
-    while (nb_premiers) < 100:
+    nb_premier = []
+    somme = 0
+    while len(nb_premier) < 100:
         nombre += 1
+        nb_premier.append(nombre)
         for i in range(2, nombre):
-            if nombre % 2 == 0:
-                nb_premiers += 1
-                somme += nombre
-
+            if nombre % i == 0:
+                nb_premier.remove(nombre)
+                break
+    for nb in nb_premier:
+        somme += nb
     return somme
 
 
@@ -53,10 +56,24 @@ def use_continue() -> None:
 def verify_ages(groups: List[List[int]]) -> List[bool]:
     validite = []
     for groupe in groups:
-        if 3 > len(groupe) > 10:
-            validite.append(True)
+        if 3 < len(groupe) < 10:
+            for age in groupe:
+                if age == 25:
+                    validite.append(True)
+                    break
+                elif age < 18:
+                    validite.append(False)
+                    break
+                elif age < 70 and age == 50:
+                    validite.append(False)
+                    break
+                else:
+                    validite.append(True)
+                    break
         else:
             validite.append(False)
+
+
 
     return validite
 
