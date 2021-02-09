@@ -55,6 +55,7 @@ def use_continue() -> None:
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
     validite = []
+    soixante_dix = False
     for groupe in groups:
         if 3 < len(groupe) < 10:
             for age in groupe:
@@ -64,7 +65,7 @@ def verify_ages(groups: List[List[int]]) -> List[bool]:
                 elif age < 18:
                     validite.append(False)
                     break
-                elif age > 70:
+                elif age >= 70:
                     soixante_dix = True
                 elif age == 50 and soixante_dix is True:
                     validite.append(False)
